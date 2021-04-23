@@ -1,6 +1,6 @@
-package cloud.autotests.tests.demowebshop;
+package cloud.autotests.tests;
 
-import cloud.autotests.config.demowebshop.TestDataConfig;
+import cloud.autotests.config.TestDataConfig;
 import org.aeonbits.owner.ConfigFactory;
 
 public class TestData {
@@ -10,10 +10,6 @@ public class TestData {
 
     public static String getWebUrl() {
         return getTestData().webUrl();
-    }
-
-    public static String getApiUrl() {
-        return getTestData().apiUrl();
     }
 
     public static String getUserLogin() {

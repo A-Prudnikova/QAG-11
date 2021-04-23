@@ -8,6 +8,7 @@ import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import cloud.autotests.tests.TestData;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,7 +30,6 @@ public class DriverHelper {
     public static boolean isWebMobile() {
         return !getWebMobile().equals("");
     }
-
 
     public static String getWebRemoteDriver() {
         // https://%s:%s@selenoid.autotests.cloud/wd/hub/
@@ -61,10 +61,11 @@ public class DriverHelper {
     public static void configureDriver() {
         addListener("AllureSelenide", new AllureSelenide());
 
-//        Configuration.baseUrl = TestData.getWebUrl();
         Configuration.browser = getDriverConfig().webBrowser();
         Configuration.browserVersion = getDriverConfig().webBrowserVersion();
         Configuration.browserSize = getDriverConfig().webBrowserSize();
+        Configuration.baseUrl = TestData.getWebUrl();
+        Configuration.timeout = 10000;
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
@@ -83,5 +84,6 @@ public class DriverHelper {
         }
 
         Configuration.browserCapabilities = capabilities;
+
     }
 }
