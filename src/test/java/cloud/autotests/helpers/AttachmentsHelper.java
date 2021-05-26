@@ -59,6 +59,8 @@ public class AttachmentsHelper {
 
     public static void attachVideo(String sessionId) {
         URL videoUrl = getVideoUrl(sessionId);
+        System.out.println("123User");
+        System.out.println(videoUrl);
         if (videoUrl != null) {
             InputStream videoInputStream = null;
             sleep(1000);
@@ -74,8 +76,12 @@ public class AttachmentsHelper {
                     e.printStackTrace();
                 }
             }
+            sleep(5000);
             addAttachment("Video", "video/mp4", videoInputStream, "mp4");
         }
+
+
+
     }
 
     public static URL getVideoUrl(String sessionId) {
@@ -87,5 +93,7 @@ public class AttachmentsHelper {
             e.printStackTrace();
         }
         return null;
+
     }
+
 }

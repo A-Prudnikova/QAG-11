@@ -29,7 +29,7 @@ public class LoginTests extends TestBase {
         });
         step("Verify wrong data validating message", () ->
                 $(".form__error-inner").shouldHave(text("Неправильный e-mail или пароль.")));
-    }
+        }
 
     @Test
     @DisplayName("Authorization with no login")
@@ -95,6 +95,7 @@ public class LoginTests extends TestBase {
             $(".inner").shouldHave(text("Регистрация"));
         });
     }
+
 }
 
 
