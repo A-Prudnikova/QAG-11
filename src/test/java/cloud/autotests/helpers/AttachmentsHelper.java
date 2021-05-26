@@ -1,6 +1,5 @@
 package cloud.autotests.helpers;
 
-import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -37,30 +36,9 @@ public class AttachmentsHelper {
         return getWebDriver().getPageSource().getBytes(StandardCharsets.UTF_8);
     }
 
-//    @Attachment(value = "Video", type = "text/html", fileExtension = ".html")
-//    public static String attachVideo(String sessionId) {
-//        return "<html><body><video width='100%' height='100%' controls autoplay><source src='"
-//                + getVideoUrl(sessionId)
-//                + "' type='video/mp4'></video></body></html>";
-//    }
-//
-//    public static String getVideoUrl(String sessionId) {
-//        return getWebVideoUrl(sessionId);
-//    }
-//
-//    public static String getWebVideoUrl(String sessionId) {
-//        try {
-//            return new URL(DriverHelper.getVideoUrl() + sessionId + ".mp4") + "";
-//        } catch (MalformedURLException e) {
-//            e.printStackTrace();
-//        }
-//        return null;
-//    }
-
     public static void attachVideo(String sessionId) {
         URL videoUrl = getVideoUrl(sessionId);
-        System.out.println("123User");
-        System.out.println(videoUrl);
+
         if (videoUrl != null) {
             InputStream videoInputStream = null;
             sleep(1000);
@@ -79,8 +57,6 @@ public class AttachmentsHelper {
             sleep(5000);
             addAttachment("Video", "video/mp4", videoInputStream, "mp4");
         }
-
-
 
     }
 
