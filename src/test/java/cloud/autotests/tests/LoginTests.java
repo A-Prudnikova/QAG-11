@@ -5,8 +5,7 @@ import org.junit.jupiter.api.*;
 
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byAttribute;
-import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
@@ -20,12 +19,12 @@ public class LoginTests extends TestBase {
         step("Open login page", () -> {
             open(TestData.getWebUrl());
             $(".body").shouldHave(text("личный кабинет"));
-            $(byAttribute("data-tip", "Войти в личный кабинет")).click();
+            $(by("data-tip", "Войти в личный кабинет")).click();
             $(".form__main").shouldHave(text("вход"));
         });
         step("Fill in login form", () -> {
-            $(byAttribute("name", "login")).val(TestData.getUserLogin());
-            $(byAttribute("name", "password")).val(TestData.getUserPassword());
+            $(by("name", "login")).val(TestData.getUserLogin());
+            $(by("name", "password")).val(TestData.getUserPassword());
             $(byText("Войти")).click();
         });
         step("Verify wrong data validating message", () ->
@@ -38,16 +37,16 @@ public class LoginTests extends TestBase {
         step("Open login page", () -> {
             open(TestData.getWebUrl());
             $(".body").shouldHave(text("личный кабинет"));
-            $(byAttribute("data-tip", "Войти в личный кабинет")).click();
+            $(by("data-tip", "Войти в личный кабинет")).click();
             $(".form__main").shouldHave(text("вход"));
         });
         step("Fill in login form", () -> {
-            $(byAttribute("name", "login")).val("");
-            $(byAttribute("name", "password")).val(TestData.getUserPassword());
+            $(by("name", "login")).val("");
+            $(by("name", "password")).val(TestData.getUserPassword());
             $(byText("Войти")).click();
         });
         step("Verify missing login validating message", () ->
-                $(byAttribute("name", "auth")).shouldHave(text("Обязательное поле")));
+                $(by("name", "auth")).shouldHave(text("Обязательное поле")));
     }
 
     @Test
@@ -56,16 +55,16 @@ public class LoginTests extends TestBase {
         step("Open login page", () -> {
             open(TestData.getWebUrl());
             $(".body").shouldHave(text("личный кабинет"));
-            $(byAttribute("data-tip", "Войти в личный кабинет")).click();
+            $(by("data-tip", "Войти в личный кабинет")).click();
             $(".form__main").shouldHave(text("вход"));
         });
         step("Fill in login form", () -> {
-            $(byAttribute("name", "login")).val(TestData.getUserLogin());
-            $(byAttribute("name", "password")).val("");
+            $(by("name", "login")).val(TestData.getUserLogin());
+            $(by("name", "password")).val("");
             $(byText("Войти")).click();
         });
         step("Verify missing password validating message", () ->
-                $(byAttribute("name", "auth")).shouldHave(text("Обязательное поле")));
+                $(by("name", "auth")).shouldHave(text("Обязательное поле")));
     }
     @Test
     @DisplayName("RememberPassword")
@@ -73,7 +72,7 @@ public class LoginTests extends TestBase {
         step("Open login page", () -> {
             open(TestData.getWebUrl());
             $(".body").shouldHave(text("личный кабинет"));
-            $(byAttribute("data-tip", "Войти в личный кабинет")).click();
+            $(by("data-tip", "Войти в личный кабинет")).click();
             $(".form__main").shouldHave(text("вход"));
         });
         step("RememberPassword", () -> {
@@ -88,7 +87,7 @@ public class LoginTests extends TestBase {
         step("Open login page", () -> {
             open(TestData.getWebUrl());
             $(".body").shouldHave(text("личный кабинет"));
-            $(byAttribute("data-tip", "Войти в личный кабинет")).click();
+            $(by("data-tip", "Войти в личный кабинет")).click();
             $(".form__main").shouldHave(text("вход"));
         });
         step("Registration", () -> {
